@@ -21,9 +21,9 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 function validateInput(testInput) {
     if (testInput === "") {
         return "Empty";
-    }    else if (isNaN(testInput) === true) {
+    }   else if (isNaN(testInput) === true) {
         return "Not a Number";
-    }    else {
+    }   else {
         return "Is a Number";
     }
  }
@@ -42,9 +42,9 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     }   else if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number") {
         window.alert("Invalid Entry! Pilot & Co-pilot Name cannot contain numbers!");
     }   else if (pilot.match(/[0-9!@#\$%\^\&*\)\(+=._-]/g) != null) {
-        window.alert(`Invalid Entry! Pilot Name cannot contain numbers or special characters!!! \nWhat kind of name is ${pilot}??? Try Again! Input letters only!`);
+        window.alert(`${pilot} contains invalid characters!\nPilot Name cannot contain "[0-9!@#\$%\^\&*\)\(+=._-]"!`);
     }   else if (copilot.match(/[0-9!@#\$%\^\&*\)\(+=._-]/g) != null) {
-        window.alert(`Invalid Entry! Co-pilot Name cannot contain numbers or special characters!!! \nWhat kind of name is ${copilot}??? Try Again! Input letters only!`);
+        window.alert(`${copilot} contains invalid characters!\nCo-pilot Name cannot contain "[0-9!@#\$%\^\&*\)\(+=._-]"!`);
     }   else if (validateInput(fuelLevel) === "Not a Number" || validateInput(cargoMass) === "Not a Number") {
         window.alert("Invalid Entry! Fuel Level & Cargo Mass must be a number!");
     }   else {
@@ -53,9 +53,9 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     document.getElementById("pilotStatus").innerText = `Pilot ${pilot} is ready for launch`;
     document.getElementById("copilotStatus").innerText = `Co-pilot ${copilot} is ready for launch`;
 
-    let launchStatus = document.getElementById("launchStatus");
-    let cargoStatus = document.getElementById("cargoStatus");
-    let fuelStatus = document.getElementById("fuelStatus");
+    const launchStatus = document.getElementById("launchStatus");
+    const cargoStatus = document.getElementById("cargoStatus");
+    const fuelStatus = document.getElementById("fuelStatus");
 
     if (fuelLevel < 10000 && cargoMass <= 10000) {
         fuelStatus.innerText = `Fuel level too low for launch\n⚠ Fuel level is ${fuelLevel}L & at least 10,000 liters of fuel are needed for the journey!`;
@@ -102,7 +102,7 @@ async function myFetch() {
 
 function pickPlanet(planets) {
     console.log(planets);
-    let randomPlanet = Math.floor(Math.random() * planets.length);
+    const randomPlanet = Math.floor(Math.random() * planets.length);
     return planets[randomPlanet];
 }
 
